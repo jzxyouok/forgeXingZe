@@ -1,4 +1,2 @@
-# forgeXingZe
-使用 vux UI组件仿照一个行者APP 
-
-####test
+# xingze
+> this is Forar XingZe_APP
