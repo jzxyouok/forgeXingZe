@@ -13,8 +13,11 @@
                 <!--拍照 设置-->
                 <div class="more"></div>
             </header>
-            <div class="cneter_bd">
+            <div class="main_bd">
                 <div class="tatol-info">
+                    <div class="top-info">
+                        <span class="gps_">GPS</span>
+                    </div>
                     <grid :rows="1" class="border0">
                         <grid-item class="border0">
                             <span class="unit">时速(km/h)</span>
@@ -50,12 +53,13 @@
                         </grid-item>
                     </grid>
                 </div>
+            </div>
+            <footer class="bottom_ft">
                 <div class="btn">
                     <div class="start">开始骑行</div>
                     <div class="map">运动地图</div>
                 </div>
-            </div>
-            <footer class="bottom_ft"></footer>
+            </footer>
         </div>
         <div class="bar bar-nav">
             <tabbar class="nav-list">
@@ -63,7 +67,7 @@
                     <span slot="icon" class="iconfont icon-qixing"></span>
                     <span slot="label">运动</span>
                 </tabbar-item>
-                <tabbar-item show-dot class="user_ nav-item">
+                <tabbar-item show-dot class="user_ nav-item" link="/user">
                     <span slot="icon" class="iconfont icon-luxian"></span>
                     <span slot="label">我的</span>
                 </tabbar-item>
@@ -101,53 +105,18 @@ export default {
         return {
             show: false
         }
+    },
+    methods: {
+        routerLink (name) {
+            this.$router.push({ name: name })
+        }
     }
 }
 </script>
 
-<style>
-@import '//at.alicdn.com/t/font_xfp3caga57zgds4i.css';
+<style scoped>
+@import '//at.alicdn.com/t/font_xe00hyji2gmsra4i.css';
 
-/*+++设置底部样式++++*/
-.page-content + .bar.bar-nav {
-    position: absolute;
-    left: 0; right: 0;
-    top: auto;
-    bottom: 0;
-    height: 58px;
-}
-.page-content + .bar.bar-nav::after,
-.page-content + .bar.bar-nav::before {
-    content: "";
-    display: block;
-    clear: both;
-    height: 0;
-    visibility: hidden;
-}
-.bar.bar-nav .nav-list {  background-color: #000; }
-.bar.bar-nav .nav-list .weui-tabbar__label {
-    font-size: 12px;
-    padding-bottom: 4px;
-}
-.nav-list .nav-item.weui-bar__item_on .weui-tabbar__icon,
-.nav-list .nav-item.weui-bar__item_on .weui-tabbar__label { color: #eee !important; }
-.nav-item .weui-tabbar__icon span.iconfont { font-size: 22px; }
-.nav-item .vux-reddot::after { top: 5px; right: -10px; }
-
-/*+++主体内容区块+++*/
-.page-content {
-    position: absolute;
-    left: 0; right: 0;
-    top: 0;
-    bottom: 58px;
-}
-.page-home .page-content .cneter_bd {
-    position: absolute;
-    left: 0; right: 0;
-    top: 48px;
-    width: 100%;
-    height: calc(100% - 48px);
-}
 /*头部*/
 .top_hd { padding: 10px 0; background-color: #000; color: #fff; }
 .top_hd h1.titel-text { 
@@ -171,16 +140,14 @@ export default {
 .top_hd .menu span.current { 
     display: inline-block; 
     padding-top: 1px; 
-    font-size: 22px;
+    font-size: 20px;
 }
+.top_hd .menu span.icon-xiala { font-size: 14px; }
 
 /*主体*/
-.cneter_bd .tatol-info .weui-grid {
+.main_bd .tatol-info .weui-grid {
     text-align: center;
     color: #333;
-}
-.tatol-info {
-    margin-top: 15%;
 }
 .tatol-info .weui-grid .unit {
     font-size: 12px;
@@ -193,12 +160,12 @@ export default {
 }
 .tatol-info .weui-grid .first-num { font-size: 58px; }
 
-.tatol-info + div.btn {
+.page-content > footer div.btn {
     position: absolute;
     width: 100%;
     bottom: 0;
 }
-.tatol-info + div.btn > div { 
+.page-content > footer div.btn > div { 
     float: left; width: 50%; 
     text-align: center;
     padding: 10px;
@@ -206,7 +173,12 @@ export default {
     color: #fff;
     font-size: 18px;
 }
-.tatol-info + div.btn .start {  background-color: #288af0; }
-.tatol-info + div.btn .map {  background-color: #333; }
+.page-content > footer div.btn .start {  background-color: #288af0; }
+.page-content > footer div.btn .map {  background-color: #333; }
+.tatol-info .top-info {
+    color: #ccc;
+    padding: 10px;
+    font-size: 12px
+}
 
 </style>

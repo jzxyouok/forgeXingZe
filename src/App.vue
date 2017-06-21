@@ -12,6 +12,11 @@ export default {
 
 <style lang="less">
 @import '~vux/src/styles/reset.less';
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 html, body {
     width: 100%; max-width: 100%;
     height: 100%;
@@ -41,4 +46,50 @@ html, body {
     background: #fff;
     z-index: 2000;
 }
+
+/*+++设置底部样式++++*/
+.page-content + .bar.bar-nav {
+    position: absolute;
+    left: 0; right: 0;
+    top: auto;
+    bottom: 0;
+    height: 58px;
+}
+.page-content + .bar.bar-nav::after,
+.page-content + .bar.bar-nav::before {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.bar.bar-nav .nav-list {  background-color: #000; }
+.bar.bar-nav .nav-list .weui-tabbar__label {
+    font-size: 12px;
+    padding-bottom: 4px;
+}
+.nav-list .nav-item.weui-bar__item_on .weui-tabbar__icon,
+.nav-list .nav-item.weui-bar__item_on .weui-tabbar__label { color: #eee !important; }
+.nav-item .weui-tabbar__icon span.iconfont { font-size: 22px; }
+.nav-item .vux-reddot::after { top: 5px; right: -10px; }
+
+/*+++主体内容区块+++*/
+.page-content {
+    position: absolute;
+    left: 0; right: 0;
+    top: 0;
+    bottom: 58px;
+    overflow-y: scroll;
+}
+.page-home .page-content .main_bd {
+    position: absolute;
+    left: 0; right: 0;
+    top: 48px;
+    width: 100%;
+    height: calc(100% - 48px);
+}
+
+/*头部样式*/
+header .vux-header { background-color: #000; }
+header .vux-header h1 { font-size: 16px !important; }
 </style>
