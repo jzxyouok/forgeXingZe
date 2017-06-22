@@ -103,13 +103,18 @@ export default {
     },
     data () {
         return {
-            show: false
+            'navbar': true,
+            'show': false
         }
     },
     methods: {
         routerLink (name) {
             this.$router.push({ name: name })
         }
+    },
+    mounted () {
+        // 控制不存在nav-bar时 .page-content 容器的高度沾满屏幕
+        this.navbar ? document.querySelector('.page-content').style.bottom = '58px' : true
     }
 }
 </script>

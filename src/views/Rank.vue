@@ -1,32 +1,63 @@
 <template>
-    <div class="page page-user">
+    <div class="page page-rank">
         <div class="page-content">
             <header class="top_hd">
-                <x-header :left-options="{backText: ''}">我的勋章</x-header>
+                <x-header :left-options="{backText: ''}">等级权限说明</x-header>
             </header>
             <div class="main_bd">
-                <div class="hd-tab">
-                    <sticky scrollBox="vux_view_box_body" :offset="46">
-                        <tab :line-width="2" active-color="#2e8ecf" v-model="tabIndex" >
-                            <tab-item selected >限时活动</tab-item>
-                            <tab-item>线上赛事</tab-item>
-                            <tab-item>常规挑战</tab-item>
-                            <tab-item>月度挑战</tab-item>
-                        </tab>
-                    </sticky>
-                </div>
-                <swiper :show-dots="false" height="100%" v-model="tabIndex" class="medal-swiper" >
-                    <swiper-item v-for="(item, index) in tabImg" :key='index' >
-                        <div class="tab-swiper vux-center border0">
-                            <grid :rows="3" class="border0">
-                                <grid-item class="border0 medal-item" v-for="(items, index) in item.medalArry" :key='index' >
-                                    <div @click.stop="showDialogFun(items)" class="medal-bg" :style="{backgroundImage: 'url(' + items.src + ')'}" >{{items.src}}</div>
-                                    <p>{{items.name}}</p>
-                                </grid-item>
-                            </grid>
+                <header class="content-hd">
+                    <div class="u-info clearfix">
+                        <div class="u-photo float_l"><img src="../assets/images/photo.jpg" alt="photo"><span class="rankNum">Lv 0</span></div>
+                        <div class="text-Uinfo float_l">
+                            <div class="float_l">
+                                <p class="name">黑钦王</p>
+                                <p class="my-addre">广西南宁市，男，18</p>
+                            </div>
+                            <div class="total-info">
+                                <span>Lv.1</span>
+                                <p>当前等级</p>
+                            </div>
                         </div>
-                    </swiper-item>
-                </swiper>
+                    </div>
+                    <group class="progress-box" gutter="0">
+                        <CellBox class="row">
+                            <div slot="default" class="float_r rank-num">Lv.2</div>
+                            <div slot="default" class="degree-num">
+                                <p>等级成长</p>
+                                <div class="progress-length">
+                                    <box>
+                                        <x-progress :percent='degree' :show-cancel="false"></x-progress>
+                                    </box>
+                                </div>
+                                <p class="des">当前总热度： <strong class="current">0 ℃</strong><span class="float_r">100℃</span></p>
+                            </div>
+                        </CellBox>
+                    </group>
+                </header>
+                <div class="content-box">
+                    <div class="hd-tab">
+                        <sticky scrollBox="vux_view_box_body" :offset="46">
+                            <tab :line-width="2" active-color="#2e8ecf" v-model="tabIndex" >
+                                <tab-item selected >限时活动</tab-item>
+                                <tab-item>线上赛事</tab-item>
+                                <tab-item>常规挑战</tab-item>
+                                <tab-item>月度挑战</tab-item>
+                            </tab>
+                        </sticky>
+                    </div>
+                    <swiper :show-dots="false" height="100%" v-model="tabIndex" class="medal-swiper" >
+                        <swiper-item v-for="(item, index) in tabImg" :key='index' >
+                            <div class="tab-swiper vux-center border0">
+                                <grid :rows="3" class="border0">
+                                    <grid-item class="border0 medal-item" v-for="(items, index) in item.medalArry" :key='index' >
+                                        <div @click.stop="showDialogFun(items)" class="medal-bg" :style="{backgroundImage: 'url(' + items.src + ')'}" >{{items.src}}</div>
+                                        <p>{{items.name}}</p>
+                                    </grid-item>
+                                </grid>
+                            </div>
+                        </swiper-item>
+                    </swiper>
+                </div>
             </div>
         </div>
         <!--弹出层-->
@@ -56,18 +87,21 @@
             </div>
         </x-dialog>
     </div>
-    <!-- not navBar -->
 </template>
-<script>
-import { XHeader, Tab, TabItem, Sticky, Swiper, SwiperItem, Grid, GridItem, XDialog, TransferDomDirective as TransferDom } from 'vux'
-const list = () => ['限时活动', '线上赛事', '常规挑战', '月度挑战']
 
+<script>
+import {
+    XHeader, XProgress, XDialog,
+    Group, CellBox, Box,
+    Tab, TabItem, Sticky, Swiper, SwiperItem, Grid, GridItem,
+    TransferDomDirective as TransferDom
+} from 'vux'
 export default {
     data () {
         return {
+            'degree': 10,
             'color': "#000",
             'isFalse': false,
-            'tabList': list(),
             'tabIndex': 0,     // tab滚动索引
             'dialogIndex': 0,  // 弹出层滚动索引
             'tabImg': [
@@ -142,14 +176,18 @@ export default {
     },
     components: {
         XHeader,
+        XProgress,
+        XDialog,
+        Group,
+        CellBox,
+        Box,
         Tab,
         TabItem,
         Sticky,
         Swiper,
         SwiperItem,
         Grid,
-        GridItem,
-        XDialog
+        GridItem
     },
     methods: {
         // 勋章弹出
@@ -176,31 +214,118 @@ export default {
             medalDes.textContent = item.des
             medalTime.textContent = String(item.starTime) + ' - ' + String(item.endTime)
         }
-    },
-    mounted () {
     }
 }
 </script>
-<style lang="less" scoped>
-@import '~vux/src/styles/1px.less';
 
-.page-content .main_bd .medal-swiper {
+<style lang="less" scoped>
+
+.page-content .main_bd {  background-color: #f2f2f2; }
+/*u-info*/
+.content-hd .u-info {
+    position: relative;
+    box-sizing: border-box;
+    
+    background-color: #59add2;
+    margin-left: 0;
+    padding: 20px 10px 30px;
+    box-sizing: border-box;
+}
+.u-info .u-photo {
+    width: 64px;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #fff;
+}
+.u-info .u-photo img { display: block; font-size: 0; width: 100%; max-width: 100%; }
+.u-info .u-photo .rankNum {
+    position: absolute; 
+    top: auto; bottom: 20px; 
+    right: auto; left: 42px;
+    z-index: 999;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    background-color: #2e8ecf;
+    padding: 1px 3px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    transform: translateX(-50%);
+}
+.u-info .text-Uinfo {
+    width: 100%; height: auto;
+    padding-left: 75px;
     position: absolute;
-    width: 100%;
-    top: 44px;
+    font-size: 12px;
+    color: #fff;
+    box-sizing: border-box;
+
+    margin-top: 10px;
+
+}
+.u-info .text-Uinfo .name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.u-info .text-Uinfo .total-info {
+    position: absolute;
+    z-index: 999;
+    top: auto;
+
+    right: 25px;
     bottom: 0;
+    text-align: center;
+}
+.u-info .total-info p { font-size: 10px; }
+.u-info .total-info span { font-size: 16px; font-weight: 600; }
+
+/*进度条*/
+.progress-box .degree-num {
+    font-size: 12px; color: #888; 
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 20px;
+}
+.degree-num .progress-length {
+    position: relative;
+    padding-right: 0;
+    margin: 5px auto;
+}
+.degree-num .current {
+    font-size: 14px;
+    color: #f04c5b;
+    font-weight: normal;
+}
+.progress-box .rank-num {
+    font-size: 16px; 
+    color: #59add2; 
+    margin-right: 5px;
+    margin-top: 15px;
 }
 
-
-/*勋章列表*/
-.medal-swiper .medal-item p {
+/*滚动*/
+.main_bd .content-box {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top: 200px;
+    background-color: #fff;
+}
+.content-box .medal-swiper {
+    position: absolute;
+    top: 46px;
+    bottom: 0;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+/*列表*/
+.content-box .medal-swiper .medal-item p {
     font-size: 12px;
     text-align: center;
     margin-top: 10px;
     color: #666;
 }
-.medal-swiper .vux-swiper-item { overflow-y: auto; }
-.medal-bg {
+.content-box .medal-swiper .vux-swiper-item { overflow-y: auto; background-color: #fff; }
+.content-box .medal-bg {
     font-size: 0;
     width: 70%;
     padding-top: 70%;
@@ -210,8 +335,9 @@ export default {
     box-shadow: 0px 0px 1px #cdcdcd;
     background-size: cover;
 }
+
 /*弹出勋章详情*/
-// .dialog-medal .weui-dialog { padding: 10px; height: 100%; } 
+/*// .dialog-medal .weui-dialog { padding: 10px; height: 100%; } */
 .dialog-medal header h3 {
     margin-bottom: 15px;
     padding-bottom: 4px;
@@ -232,7 +358,7 @@ export default {
     border-radius: 50%;
     font-size: 0;
 }
-// 首屏图
+/*首屏图*/
 .dialog-medal .dialog-content .img-box.first {
     float: none; 
     width: 60%; 
@@ -244,7 +370,7 @@ export default {
     width: 60px; height: 60px;
     background-color: #f2f2f2;
 }
-// 首屏图
+/*首屏图*/
 .dialog-medal .dialog-content .img-box.first .medal-img {
     width: 100%;
     height: 100%; 
@@ -263,15 +389,25 @@ export default {
     width: 100%;
 }
 
-
 </style>
 <style>
-/*轮播提示点*/
-.dialog-medal .weui-dialog { padding: 10px; padding-top: 0; height: 60%; }
+.progress-box .row > div {
+    padding-right: 0;
+    display: block;
+    width: 100%;
+}
+.progress-box .degree-num .weui-progress__bar {
+    height: 10px;
+    border-radius: 4px;
+}
+.progress-box .degree-num .weui-progress__inner-bar { border-radius: inherit; }
+
+/*弹出层*/
+.dialog-medal .weui-dialog {
+    padding: 10px;
+    padding-top: 0;
+    height: 60%;
+}
 .dialog-medal .weui-dialog .vux-slider { height: 100%; }
-.current-dots { bottom: 0 !important; }
-.current-dots a > i.vux-icon-dot { background-color: #cdcdcd !important; }
-.current-dots a > i.vux-icon-dot.active { background-color: #2e8ecf !important; }
-.current-dots a:first-child { margin-left: 0 !important; }
 </style>
 

@@ -74,19 +74,21 @@ html, body {
 .nav-item .vux-reddot::after { top: 5px; right: -10px; }
 
 /*+++主体内容区块+++*/
+
 .page-content {
     position: absolute;
     left: 0; right: 0;
     top: 0;
-    bottom: 58px;
+    bottom: 0;
     overflow-y: scroll;
 }
-.page-home .page-content .main_bd {
+.page-content .main_bd {
     position: absolute;
-    left: 0; right: 0;
-    top: 48px;
     width: 100%;
-    height: calc(100% - 48px);
+    top: 46px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /*头部样式*/

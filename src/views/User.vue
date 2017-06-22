@@ -1,44 +1,45 @@
 <template>
     <div class="page page-user">
         <div class="page-content">
-            <header class="top_hd">
-                <div class="show-content">
-                    <div class="tip-box text_r">
-                        <!--消息-->
-                        <span class="iconfont icon-msg msg"></span>
-                        <!--设置-->
-                        <span class="iconfont icon-set set-btn"></span>
-                    </div>
-                    <div class="u-info clearfix">
-                        <div class="u-photo float_l"><img src="../assets/images/photo.jpg" alt="photo"><span class="gradeNum">Lv 0</span></div>
-                        <div class="text-Uinfo float_l">
-                            <div class="float_l">
-                                <p class="name">黑钦王</p>
-                                <p class="my-club">我的俱乐部</p>
-                                <p class="my-addre">广西南宁市，男，18</p>
-                            </div>
-                            <div class="total-info">
-                                <div class="fans_">
-                                    <span>0</span>
-                                    <p>粉丝</p>
+            <div class="main_bd">
+                <header class="content-hd">
+                    <div class="show-content">
+                        <div class="tip-box text_r">
+                            <!--消息-->
+                            <span class="iconfont icon-msg msg"></span>
+                            <!--设置-->
+                            <span class="iconfont icon-set set-btn"></span>
+                        </div>
+                        <div class="u-info clearfix">
+                            <div class="u-photo float_l"><img src="../assets/images/photo.jpg" alt="photo"><span class="rankNum">Lv 0</span></div>
+                            <div class="text-Uinfo float_l">
+                                <div class="float_l">
+                                    <p class="name">黑钦王</p>
+                                    <p class="my-club">我的俱乐部</p>
+                                    <p class="my-addre">广西南宁市，男，18</p>
                                 </div>
-                                <div class="concern_">
-                                    <span>0</span>
-                                    <p>关注</p>
+                                <div class="total-info">
+                                    <div class="fans_">
+                                        <span>0</span>
+                                        <p>粉丝</p>
+                                    </div>
+                                    <div class="concern_">
+                                        <span>0</span>
+                                        <p>关注</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="u-more clearfix">
+                            <div class="u-rank float_l" link="/user/rank" ><span class="iconfont icon-dengji"></span><strong>等级特权</strong></div>
+                            <div class="u-xingzeID float_l"><span class="iconfont icon-biaoqian"></span><strong>行者号</strong></div>
+                            <div class="u-editBtn float_r">编辑个人信息</div>
+                        </div>
                     </div>
-                    <div class="u-more clearfix">
-                        <div class="u-grade float_l"><span class="iconfont icon-dengji"></span><strong>等级特权</strong></div>
-                        <div class="u-xingzeID float_l"><span class="iconfont icon-biaoqian"></span><strong>行者号</strong></div>
-                        <div class="u-editBtn float_r">编辑个人信息</div>
-                    </div>
-                </div>
-                <!--遮罩层-->
-                <div class="layer bg_color"></div>
-            </header>
-            <div class="main_bd">
+                    <!--遮罩层-->
+                    <div class="layer bg_color"></div>
+                </header>
+                <!--统计-->
                 <grid :rows="3" class="border0 total-content">
                     <grid-item class="border0">
                         <span class="num">0</span>
@@ -53,6 +54,7 @@
                         <p class="unit">骑行排名</p>
                     </grid-item>
                 </grid>
+                <!--进度条-->
                 <group class="group group_2">
                     <CellBox>
                         <div slot="default" class="float_l time_M">6月</div>
@@ -71,11 +73,12 @@
                         <span class="iconfont icon-jilu" slot="icon"></span>
                     </cell>
                 </group>
+                <!--勋章、智能设备、聊天-->
                 <group class="group group_3">
                     <cell title="勋章" is-link  link="user/medal">
                         <span class="iconfont icon-huizhang" slot="icon"></span>
                     </cell>
-                    <cell title="智能设备" is-link>
+                    <cell title="智能设备" is-link link="user/device">
                         <span class="iconfont icon-lanyashili" slot="icon"></span>
                     </cell>
                     <cell title="聊天" is-link>
@@ -131,8 +134,13 @@ export default {
     },
     data () {
         return {
+            'navbar': true,
             'degree': 10
         }
+    },
+    mounted () {
+        // 控制不存在nav-bar时 .page-content 容器的高度沾满屏幕
+        this.navbar ? document.querySelector('.page-content').style.bottom = '58px' : true
     }
 }
 </script>
@@ -141,10 +149,10 @@ export default {
 @import '//at.alicdn.com/t/font_xe00hyji2gmsra4i.css';
 
 /*头部*/
-.page-user header.top_hd {
+.page-user header.content-hd {
     position: relative;
 }
-.top_hd > .show-content {
+.content-hd > .show-content {
     position: relative;
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.24);
@@ -171,7 +179,7 @@ export default {
 }
 .page-user .tip-box { padding: 10px; color: #fff; }
 /*u-info*/
-.page-user .top_hd .u-info {
+.page-user .content-hd .u-info {
     position: relative;
     margin-left: 15px;
     box-sizing: border-box;
@@ -184,7 +192,7 @@ export default {
     border: 1px solid #fff;
 }
 .u-info .u-photo img { display: block; font-size: 0; width: 100%; max-width: 100%; }
-.u-info .u-photo .gradeNum {
+.u-info .u-photo .rankNum {
     position: absolute; 
     top: auto; bottom: -10px; 
     right: auto; left: 32px;
@@ -217,7 +225,7 @@ export default {
 .u-info .total-info > div { display: inline-block; text-align: center; }
 .u-info .total-info > div > span { font-size: 14px; font-weight: 600; }
 /*u-more*/
-.page-user .top_hd .u-more {
+.page-user .content-hd .u-more {
     position: relative;
     margin: 15px; margin-bottom: 0;
     padding-top: 15px;
@@ -225,27 +233,27 @@ export default {
     font-size: 10px;
     line-height: 1.2;
 }
-.page-user .top_hd .u-more > div {
+.page-user .content-hd .u-more > div {
     background-color: rgba(0, 0, 0, 0.38);
     color: #fff;
     border-radius: 4px;
 }
-.top_hd .u-more > div.float_l { margin-right: 10px; padding-right: 10px; padding-top: 1px; }
-.top_hd .u-more > div.float_l > span { display: inline-block; vertical-align: middle; margin-right: 8px; }
-.top_hd .u-more > div.float_l > strong { display: inline-block; vertical-align: middle; font-weight: normal;}
-/*.top_hd .u-more .u-grade {
+.content-hd .u-more > div.float_l { margin-right: 10px; padding-right: 10px; padding-top: 1px; }
+.content-hd .u-more > div.float_l > span { display: inline-block; vertical-align: middle; margin-right: 8px; }
+.content-hd .u-more > div.float_l > strong { display: inline-block; vertical-align: middle; font-weight: normal;}
+/*.content-hd .u-more .u-rank {
 }
-.top_hd .u-more .u-xingzeID {
+.content-hd .u-more .u-xingzeID {
 }
 */
-.top_hd .u-more div.u-editBtn {
+.content-hd .u-more div.u-editBtn {
     font-size: 12px;
     padding: 6px 10px;
     margin-top: -4px;
 }
 
 /*主体*/
-.page-user .main_bd { background-color: #f2f2f2; }
+.page-user .main_bd { background-color: #f2f2f2; top: 0; }
 .page-user .main_bd > div { background-color: #fff; }
 .group_3 .weui-cell:before { left: 0; }
 .group .icon-jilu { color: #e36763 }
