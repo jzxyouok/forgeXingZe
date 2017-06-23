@@ -306,7 +306,7 @@ export default {
     position: absolute;
     width: 100%;
     bottom: 0;
-    top: 200px;
+    top: 195px;
     background-color: #fff;
 }
 .content-box .medal-swiper {

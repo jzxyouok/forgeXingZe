@@ -15,47 +15,49 @@
             </header>
             <div class="main_bd">
                 <div class="tatol-info">
-                    <div class="top-info">
-                        <span class="gps_">GPS</span>
+                    <div>
+                        <div class="top-info">
+                            <span class="gps_">GPS</span>
+                        </div>
+                        <grid :rows="1" class="border0">
+                            <grid-item class="border0">
+                                <span class="unit">时速(km/h)</span>
+                                <p class="num first-num">0.00</p>
+                            </grid-item>
+                        </grid>
+                        <grid :rows="3" class="border0">
+                            <grid-item class="border0">
+                                <span class="unit">里程(km)</span>
+                                <p class="num">0.00</p>
+                            </grid-item>
+                            <grid-item class="border0">
+                                <span class="unit">时间</span>
+                                <p class="num">00:00</p>
+                            </grid-item>
+                            <grid-item class="border0">
+                                <span class="unit">均速(km/h)</span>
+                                <p class="num">0.00</p>
+                            </grid-item>
+                        </grid>
+                        <grid :rows="3" class="border0">
+                            <grid-item class="border0">
+                                <span class="unit">极速(km/h)</span>
+                                <p class="num">0.00</p>
+                            </grid-item>
+                            <grid-item class="border0">
+                                <span class="unit">海拔(m)</span>
+                                <p class="num">0.00</p>
+                            </grid-item>
+                            <grid-item class="border0">
+                                <span class="unit">爬升(m)</span>
+                                <p class="num">0.00</p>
+                            </grid-item>
+                        </grid>
                     </div>
-                    <grid :rows="1" class="border0">
-                        <grid-item class="border0">
-                            <span class="unit">时速(km/h)</span>
-                            <p class="num first-num">0.00</p>
-                        </grid-item>
-                    </grid>
-                    <grid :rows="3">
-                        <grid-item class="border0">
-                            <span class="unit">里程(km)</span>
-                            <p class="num">0.00</p>
-                        </grid-item>
-                        <grid-item class="border0">
-                            <span class="unit">时间</span>
-                            <p class="num">00:00</p>
-                        </grid-item>
-                        <grid-item class="border0">
-                            <span class="unit">均速(km/h)</span>
-                            <p class="num">0.00</p>
-                        </grid-item>
-                    </grid>
-                    <grid :rows="3">
-                        <grid-item class="border0">
-                            <span class="unit">极速(km/h)</span>
-                            <p class="num">0.00</p>
-                        </grid-item>
-                        <grid-item class="border0">
-                            <span class="unit">海拔(m)</span>
-                            <p class="num">0.00</p>
-                        </grid-item>
-                        <grid-item class="border0">
-                            <span class="unit">爬升(m)</span>
-                            <p class="num">0.00</p>
-                        </grid-item>
-                    </grid>
                 </div>
             </div>
-            <footer class="bottom_ft">
-                <div class="btn">
+            <footer class="bottom_ft clearfix">
+                <div class="btn clearfix">
                     <div class="start">开始骑行</div>
                     <div class="map">运动地图</div>
                 </div>
@@ -150,6 +152,13 @@ export default {
 .top_hd .menu span.icon-xiala { font-size: 14px; }
 
 /*主体*/
+.main_bd .tatol-info {
+    position: absolute;
+    top: 0; bottom: 48px;
+    left: 0; right: 0;
+    width: 100%;
+    overflow-y: auto;
+}
 .main_bd .tatol-info .weui-grid {
     text-align: center;
     color: #333;
