@@ -63,7 +63,7 @@ html, body {
     height: 0;
     visibility: hidden;
 }
-.bar.bar-nav .nav-list {  background-color: #000; }
+.bar.bar-nav .nav-list {  background-color: #000; overflow: hidden }
 .bar.bar-nav .nav-list .weui-tabbar__label {
     font-size: 12px;
     padding-bottom: 4px;
