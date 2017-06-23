@@ -116,7 +116,7 @@ export default {
     },
     mounted () {
         // 控制不存在nav-bar时 .page-content 容器的高度沾满屏幕
-        this.navbar ? document.querySelector('.page-content').style.bottom = '58px' : true
+        this.navbar ? document.querySelector('.page-content').style.bottom = '50px' : true
     }
 }
 </script>
