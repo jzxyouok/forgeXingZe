@@ -222,7 +222,7 @@ export default {
     position: absolute;
     top: 60px; bottom: 60px;
     width: 100%;
-    padding: 0 10px;
+    padding: 0;
     font-size: 12px;
     overflow-y: scroll;
 }
