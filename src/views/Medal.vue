@@ -267,7 +267,7 @@ export default {
 </style>
 <style>
 /*轮播提示点*/
-.dialog-medal .weui-dialog { padding: 10px; padding-top: 0; height: 60%; }
+.dialog-medal .weui-dialog { padding: 10px; padding-top: 0; height: 60%; min-height: 300px; }
 .dialog-medal .weui-dialog .vux-slider { height: 100%; }
 .current-dots { bottom: 0 !important; }
 .current-dots a > i.vux-icon-dot { background-color: #cdcdcd !important; }
