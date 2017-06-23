@@ -219,6 +219,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '~vux/src/styles/1px.less';
 
 .page-content .main_bd {  background-color: #f2f2f2; }
 /*u-info*/
@@ -327,8 +328,8 @@ export default {
 .content-box .medal-swiper .vux-swiper-item { overflow-y: auto; background-color: #fff; }
 .content-box .medal-bg {
     font-size: 0;
-    width: 70%;
-    padding-top: 70%;
+    width: 60%;
+    padding-top: 60%;
     margin: auto;
     border-radius: 50%;
     background-color: #f2f2f2;

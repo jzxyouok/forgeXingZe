@@ -202,8 +202,8 @@ export default {
 .medal-swiper .vux-swiper-item { overflow-y: auto; }
 .medal-bg {
     font-size: 0;
-    width: 70%;
-    padding-top: 70%;
+    width: 60%;
+    padding-top: 60%;
     margin: auto;
     border-radius: 50%;
     background-color: #f2f2f2;
