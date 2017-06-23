@@ -224,7 +224,7 @@ export default {
     width: 100%;
     padding: 0;
     font-size: 12px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .dialog-medal .dialog-content .img-box {
     float: left;
