@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="u-more clearfix">
-                            <div class="u-rank float_l" link="/user/rank" ><span class="iconfont icon-dengji"></span><strong>等级特权</strong></div>
+                            <div class="u-rank float_l" @click="linkFun('/user/rank')" ><span class="iconfont icon-dengji"></span><strong>等级特权</strong></div>
                             <div class="u-xingzeID float_l"><span class="iconfont icon-biaoqian"></span><strong>行者号</strong></div>
                             <div class="u-editBtn float_r">编辑个人信息</div>
                         </div>
@@ -63,7 +63,7 @@
                             <p class="current">0 ℃</p>
                             <div class="progress-length">
                                 <box>
-                                    <x-progress :percent='degree'></x-progress>
+                                    <x-progress :percent='degree' :show-cancel="false"></x-progress>
                                 </box>
                             </div>
                             <p class="des">热度</p>
@@ -141,6 +141,11 @@ export default {
     mounted () {
         // 控制不存在nav-bar时 .page-content 容器的高度沾满屏幕
         this.navbar ? document.querySelector('.page-content').style.bottom = '58px' : true
+    },
+    methods: {
+        linkFun (link) {
+            this.$router.push({ name: link })
+        }
     }
 }
 </script>

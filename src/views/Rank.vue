@@ -29,7 +29,7 @@
                                         <x-progress :percent='degree' :show-cancel="false"></x-progress>
                                     </box>
                                 </div>
-                                <p class="des">当前总热度： <strong class="current">0 ℃</strong><span class="float_r">100℃</span></p>
+                                <p class="des">当前总热度： <strong class="current">0 ℃</strong><span class="float_r">3℃</span></p>
                             </div>
                         </CellBox>
                     </group>
@@ -38,15 +38,13 @@
                     <div class="hd-tab">
                         <sticky scrollBox="vux_view_box_body" :offset="46">
                             <tab :line-width="2" active-color="#2e8ecf" v-model="tabIndex" >
-                                <tab-item selected >限时活动</tab-item>
-                                <tab-item>线上赛事</tab-item>
-                                <tab-item>常规挑战</tab-item>
-                                <tab-item>月度挑战</tab-item>
+                                <tab-item v-for="(item, index) in tabImg" :key='index' >{{item.name}}</tab-item>
                             </tab>
                         </sticky>
                     </div>
-                    <swiper :show-dots="false" height="100%" v-model="tabIndex" class="medal-swiper" >
+                    <swiper :show-dots="false" height="100%" v-model="tabIndex" class="medal-swiper rank-swiper" >
                         <swiper-item v-for="(item, index) in tabImg" :key='index' >
+                            <h4 class="condition-title">{{item.condition}}</h4>
                             <div class="tab-swiper vux-center border0">
                                 <grid :rows="3" class="border0">
                                     <grid-item class="border0 medal-item" v-for="(items, index) in item.medalArry" :key='index' >
@@ -61,29 +59,11 @@
             </div>
         </div>
         <!--弹出层-->
-        <x-dialog style="height: 100%;" class="dialog-medal" v-model="isDialog"  :hide-on-blur='true' >
-            <div style="padding: 5px 10px; height: 100%;">
-                <swiper height="100%" dots-position="center" dots-class="current-dots" v-model="dialogIndex">
-                    <swiper-item >
-                        <header><h3 class="medal-name vux-1px-b"></h3></header>
-                        <div class="dialog-content clearfix">
-                            <div class="img-box first">
-                                <img class="medal-img" src="" style="max-width:100%">
-                            </div>
-                        </div>
-                        <footer><p class="medal-tip">未获得</p></footer>
-                    </swiper-item>
-                    <swiper-item >
-                        <header><h3 class="medal-name vux-1px-b"></h3></header>
-                        <div class="dialog-content">
-                            <div class="img-box">
-                                <img class="medal-img" src="" style="max-width:100%">
-                            </div>
-                            <div class="medal-des"></div>
-                        </div>
-                        <footer><p class="medal-time"></p></footer>
-                    </swiper-item>
-                </swiper>
+        <x-dialog style="height: 100%;" class="dialog-medal dialog-rank" v-model="isDialog"  :hide-on-blur='true' >
+            <div style="padding: 5px 10px; height: 100%; position: relative;">
+                <header><h3 class="rankItem-name vux-1px-b"></h3></header>
+                <div class="rankItem-des"></div>
+                <button class="rankItem-btn" @click="isDialog=false">我知道了</button>
             </div>
         </x-dialog>
     </div>
@@ -105,10 +85,10 @@ export default {
             'tabIndex': 0,     // tab滚动索引
             'dialogIndex': 0,  // 弹出层滚动索引
             'tabImg': [
-                // 限时活动
                 {
                     'id': 1,
-                    'name': '限时活动',
+                    'name': 'Lv.1',
+                    'condition': 'Lv.1 需要总热度达到 0℃',
                     'medalArry': [
                         {
                             'id': 11,
@@ -126,10 +106,10 @@ export default {
                         }
                     ]
                 },
-                // 线上赛事
                 {
                     'id': 2,
-                    'name': '线上赛事',
+                    'name': 'Lv.2',
+                    'condition': 'Lv.2 需要总热度达到 3℃',
                     'medalArry': [
                         {
                             'id': 21,
@@ -143,10 +123,10 @@ export default {
                         }
                     ]
                 },
-                // 常规挑战
                 {
                     'id': 3,
-                    'name': '常规挑战',
+                    'name': 'Lv.3',
+                    'condition': 'Lv.3 需要总热度达到 10℃',
                     'medalArry': [
                         {
                             'id': 23,
@@ -155,13 +135,37 @@ export default {
                         }
                     ]
                 },
-                // 月度挑战
                 {
                     'id': 4,
-                    'name': '月度挑战',
+                    'name': 'Lv.4',
+                    'condition': 'Lv.4 需要总热度达到 30℃',
                     'medalArry': [
                         {
                             'id': 41,
+                            'name': '月度挑战者',
+                            'src': require('../assets/images/photo.jpg')
+                        }
+                    ]
+                },
+                {
+                    'id': 5,
+                    'name': 'Lv.5',
+                    'condition': 'Lv.5 需要总热度达到 100℃',
+                    'medalArry': [
+                        {
+                            'id': 51,
+                            'name': '月度挑战者',
+                            'src': require('../assets/images/photo.jpg')
+                        }
+                    ]
+                },
+                {
+                    'id': 6,
+                    'name': 'Lv.6',
+                    'condition': 'Lv.6 需要总热度达到 200℃',
+                    'medalArry': [
+                        {
+                            'id': 61,
                             'name': '月度挑战者',
                             'src': require('../assets/images/photo.jpg')
                         }
@@ -201,18 +205,24 @@ export default {
             //     dots[1].setAttribute('class', 'vux-icon-dot')
             // }
 
-            let dialogMedal = document.querySelector('.dialog-medal')
-            let medalImg = dialogMedal.querySelectorAll('.medal-img')
-            let medalName = dialogMedal.querySelectorAll('.medal-name')
-            let medalDes = dialogMedal.querySelector('.medal-des')
-            let medalTime = dialogMedal.querySelector('.medal-time')
+            // let dialogMedal = document.querySelector('.dialog-medal')
+            // let medalImg = dialogMedal.querySelectorAll('.medal-img')
+            // let medalName = dialogMedal.querySelectorAll('.medal-name')
+            // let medalDes = dialogMedal.querySelector('.medal-des')
+            // let medalTime = dialogMedal.querySelector('.medal-time')
 
-            medalName[0].textContent = item.name
-            medalName[1].textContent = item.name
-            medalImg[0].setAttribute('src', item.src)
-            medalImg[1].setAttribute('src', item.src)
-            medalDes.textContent = item.des
-            medalTime.textContent = String(item.starTime) + ' - ' + String(item.endTime)
+            // medalName[0].textContent = item.name
+            // medalName[1].textContent = item.name
+            // medalImg[0].setAttribute('src', item.src)
+            // medalImg[1].setAttribute('src', item.src)
+            // medalDes.textContent = item.des
+            // medalTime.textContent = String(item.starTime) + ' - ' + String(item.endTime)
+            let dialogRank = document.querySelector('.dialog-rank')
+            let rankItemName = dialogRank.querySelector('.rankItem-name')
+            let rankItemDes = dialogRank.querySelector('.rankItem-des')
+
+            rankItemName.textContent = item.name
+            rankItemDes.textContent = item.des
         }
     }
 }
@@ -319,6 +329,13 @@ export default {
     overflow-x: hidden;
 }
 /*列表*/
+.content-box .rank-swiper .condition-title {
+    font-size: 16px;
+    color: #59add2;
+    font-weight: normal;
+    margin: 10px auto;
+    text-align: center;
+}
 .content-box .medal-swiper .medal-item p {
     font-size: 12px;
     text-align: center;
@@ -387,6 +404,28 @@ export default {
     position: absolute;
     bottom: 30px;
     width: 100%;
+}
+
+.dialog-rank .rankItem-des {
+    font-size: 14px;
+    text-align: justify;
+}
+// 按钮
+.dialog-rank .rankItem-btn {
+    display: block;
+    position: absolute;
+    bottom: 5px; top: auto;
+    left: 0; right: 0;
+
+    width: 100%;
+    padding: 8px 0;
+    border: 1px solid #59add2;
+    border-radius: 2px;
+    background-color: #fff;
+    outline: 0;
+
+    color: #59add2;
+    font-size: 16px;
 }
 
 </style>

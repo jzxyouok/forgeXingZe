@@ -35,7 +35,11 @@ html, body {
     visibility: hidden;
 }
 .border0 { border: 0; }
-.border0::after, .border0::before { height: 0 !important; border-top: 0 !important; }
+.border0::after, .border0::before {
+    height: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
 
 #app, .page {
     position: absolute;
