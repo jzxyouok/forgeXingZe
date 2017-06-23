@@ -315,7 +315,7 @@ export default {
     top: 46px;
     bottom: 0;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 /*列表*/
