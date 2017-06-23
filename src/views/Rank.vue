@@ -338,7 +338,6 @@ export default {
 }
 
 /*弹出勋章详情*/
-/*// .dialog-medal .weui-dialog { padding: 10px; height: 100%; } */
 .dialog-medal header h3 {
     margin-bottom: 15px;
     padding-bottom: 4px;
@@ -349,7 +348,7 @@ export default {
     position: absolute;
     top: 60px; bottom: 60px;
     width: 100%;
-    padding: 0 10px;
+    padding: 0;
     font-size: 12px;
     overflow-y: auto;
 }
