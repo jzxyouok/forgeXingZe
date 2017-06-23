@@ -55,13 +55,13 @@
                         </grid>
                     </div>
                 </div>
+                <footer class="bottom_ft clearfix">
+                    <div class="btn clearfix">
+                        <div class="start">开始骑行</div>
+                        <div class="map">运动地图</div>
+                    </div>
+                </footer>
             </div>
-            <footer class="bottom_ft clearfix">
-                <div class="btn clearfix">
-                    <div class="start">开始骑行</div>
-                    <div class="map">运动地图</div>
-                </div>
-            </footer>
         </div>
         <div class="bar bar-nav">
             <tabbar class="nav-list">
@@ -174,12 +174,19 @@ export default {
 }
 .tatol-info .weui-grid .first-num { font-size: 58px; }
 
-.page-content > footer div.btn {
+.page-content .main_bd > footer {
+    position: absolute;
+    top: auto; bottom: 0;
+    width: 100%; height: 49px;
+    overflow: hidden;
+    z-index: 999;
+}
+.page-content .main_bd > footer div.btn {
     position: absolute;
     width: 100%;
     bottom: 0;
 }
-.page-content > footer div.btn > div { 
+.page-content .main_bd > footer div.btn > div { 
     float: left; width: 50%; 
     text-align: center;
     padding: 10px;
@@ -187,8 +194,8 @@ export default {
     color: #fff;
     font-size: 18px;
 }
-.page-content > footer div.btn .start {  background-color: #288af0; }
-.page-content > footer div.btn .map {  background-color: #333; }
+.page-content .main_bd > footer .start {  background-color: #288af0; }
+.page-content .main_bd > footer .map {  background-color: #333; }
 .tatol-info .top-info {
     color: #ccc;
     padding: 10px;
