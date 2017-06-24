@@ -125,7 +125,7 @@ export default {
 @import '//at.alicdn.com/t/font_xe00hyji2gmsra4i.css';
 
 /*头部*/
-.top_hd { padding: 10px 0; background-color: #000; color: #fff; }
+.page-home .top_hd { padding: 15px 0; background-color: #000; color: #fff; }
 .top_hd h1.titel-text { 
     position: absolute; 
     width: 100%; font-size: 16px; 
@@ -152,6 +152,9 @@ export default {
 .top_hd .menu span.icon-xiala { font-size: 14px; }
 
 /*主体*/
+.page-home .main_bd {
+    top: 55px;
+}
 .main_bd .tatol-info {
     position: absolute;
     top: 0; bottom: 48px;
@@ -177,7 +180,7 @@ export default {
 .page-content .main_bd > footer {
     position: absolute;
     top: auto; bottom: 0;
-    width: 100%; height: 49px;
+    width: 100%; height: 50px;
     overflow: hidden;
     z-index: 999;
 }
@@ -187,9 +190,9 @@ export default {
     bottom: 0;
 }
 .page-content .main_bd > footer div.btn > div { 
-    float: left; width: 50%; 
+    float: left;
+    width: 50%; height: 50px; line-height: 50px;
     text-align: center;
-    padding: 10px;
     box-sizing: border-box;
     color: #fff;
     font-size: 18px;
