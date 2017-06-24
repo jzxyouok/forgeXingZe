@@ -136,6 +136,8 @@ export default {
 // group-list
 .main_bd .content-box > .group-list .weui-cell {
     font-size: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
 }
 
 // bind-info
