@@ -157,7 +157,7 @@ export default {
 }
 .main_bd .tatol-info {
     position: absolute;
-    top: 0; bottom: 48px;
+    top: 0; bottom: 50px;
     left: 0; right: 0;
     width: 100%;
     overflow-y: auto;
@@ -195,7 +195,7 @@ export default {
     text-align: center;
     box-sizing: border-box;
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
 }
 .page-content .main_bd > footer .start {  background-color: #288af0; }
 .page-content .main_bd > footer .map {  background-color: #333; }
