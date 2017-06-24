@@ -93,13 +93,22 @@ html, body {
 .page-content .main_bd {
     position: absolute;
     width: 100%;
-    top: 45px;
+    top: 50px;
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 /*头部样式*/
-header .vux-header { background-color: #000; }
+header .vux-header { background-color: #000; padding: 5px 0; }
 header .vux-header h1 { font-size: 16px !important; }
+
+
+// CellBox
+.vux-cell-box > div {
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
 </style>

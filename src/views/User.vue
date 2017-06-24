@@ -31,9 +31,9 @@
                             </div>
                         </div>
                         <div class="u-more clearfix">
-                            <div class="u-rank float_l" @click="linkFun('/user/rank')" ><span class="iconfont icon-dengji"></span><strong>等级特权</strong></div>
+                            <div class="u-rank float_l" @click.stop="linkFun('/user/rank')" ><span class="iconfont icon-dengji"></span><strong>等级特权</strong></div>
                             <div class="u-xingzeID float_l"><span class="iconfont icon-biaoqian"></span><strong>行者号</strong></div>
-                            <div class="u-editBtn float_r">编辑个人信息</div>
+                            <div class="u-editBtn float_r" @click.stop="linkFun('/user/userAdmin')">编辑个人信息</div>
                         </div>
                     </div>
                     <!--遮罩层-->

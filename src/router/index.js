@@ -28,4 +28,9 @@ export default [{
     name: '/user/rank',
     component (resolve) { require(['../views/Rank'], resolve) },
     meta: { scrollToTop: true }
+}, { // 个人中心后台 userAdmin
+    path: '/user/userAdmin',
+    name: '/user/userAdmin',
+    component (resolve) { require(['../views/UserAdmin'], resolve) },
+    meta: { scrollToTop: true }
 }]
