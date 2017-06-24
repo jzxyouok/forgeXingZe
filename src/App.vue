@@ -57,7 +57,10 @@ html, body {
     left: 0; right: 0;
     top: auto;
     bottom: 0;
+    z-index: 9999;
     height: 58px;
+    overflow: hidden;
+    zoom: 1;
 }
 .page-content + .bar.bar-nav::after,
 .page-content + .bar.bar-nav::before {
@@ -68,6 +71,7 @@ html, body {
     visibility: hidden;
 }
 .bar.bar-nav .nav-list {  background-color: #000; overflow: hidden }
+.bar.bar-nav .nav-list .weui-tabbar__item { height: 58px; }
 .bar.bar-nav .nav-list .weui-tabbar__label {
     font-size: 12px;
     padding-bottom: 4px;
