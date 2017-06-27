@@ -150,7 +150,7 @@ export default {
 }
 .enrollCard-con .tip {
     margin: 10px 15px;
-    font-size: 12px;
+    font-size: 10px;
     color: red;
     text-align: center;
 }
@@ -170,9 +170,10 @@ export default {
 
 .enrollCard-con .weui-input,
 .enrollCard-con .weui-textarea {
+    font-size: 14px;
     color: #999;
 }
-/*.enrollCard-con .weui-cell__hd > span { font-size: 14px; }*/
+.enrollCard-con .weui-cell__hd > span { font-size: 14px; }
 .enrollCard-con .weui-textarea { padding-top: 5px; }
 
 </style>
