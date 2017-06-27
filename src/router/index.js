@@ -53,4 +53,9 @@ export default [{
     name: '/user/card',
     component (resolve) { require(['../views/user/EnrollCard'], resolve) },
     meta: { scrollToTop: true }
+}, { // 运动装备设置  card
+    path: '/user/sportsdevice',
+    name: '/user/sportsdevice',
+    component (resolve) { require(['../views/user/SportsDevice'], resolve) },
+    meta: { scrollToTop: true }
 }]

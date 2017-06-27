@@ -28,6 +28,9 @@
                             @click.native="birthdayDialogFun()" >
                             <span slot="label">出生日期</span>
                         </x-input>
+                        <template>
+                            <vue-event-calendar :events="demoEvents" @monthChanged="" @dayChanged=""></vue-event-calendar>
+                        </template>
                     </group>
 
                     <group gutter="10px">
@@ -37,7 +40,7 @@
                         <x-input :show-clear="false" class="u-email" text-align="right" v-model="userInfo.email">
                             <span slot="label">邮箱</span>
                         </x-input>
-                        <x-textarea class="u-address" v-model="userInfo.address" :max="200" placeholder="请输入地址" :show-counter="false" :height="80" >
+                        <x-textarea class="u-address" v-model="userInfo.address" :max="200" placeholder="请输入地址" :show-counter="false" :height="80">
                             <span slot="label">地址</span>
                         </x-textarea>
                     </group>
@@ -50,6 +53,10 @@
                             <span slot="label">紧急联系人电话</span>
                         </x-input>
                     </group>
+
+                    <div style="margin: auto 10px;">
+                        <x-button class="save-btn"  @click.native="isPhone=false">保存</x-button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,17 +74,23 @@
         <!--生日选择-->
         <x-dialog class="birthday-dialog" v-model="birthdayDialog"
             :hide-on-blur="true">
+            <div class="content-hd"><span class="data_">2017</span>年<span class="Month_">6</span>月<span class="Day_">23</span>日</div>
             <div class="content-box">
-                
             </div>
         </x-dialog>
+        
     </div>
 </template>
 <script>
+import Vue from 'vue'
+import 'vue-event-calendar/dist/style.css'
+import vueEventCalendar from 'vue-event-calendar'
+Vue.use(vueEventCalendar, {locale: 'en'})
 import {
     XHeader, XButton, XInput, XTextarea,
     Group, XDialog
 } from 'vux'
+// 获取对应年、月、日
 export default {
     components: {
         XHeader,
@@ -86,6 +99,8 @@ export default {
         XTextarea,
         Group,
         XDialog
+    },
+    watch: {
     },
     data () {
         return {
@@ -96,7 +111,7 @@ export default {
                     'number': 0,
                     'name': '男'
                 },
-                'birthday': 14132304,
+                'birthday': '2017-6-18',
                 'phone': 1313277334,
                 'email': 'nong99@outlook.com',
                 'address': '广西壮族自治区南宁市西乡塘区高科路28号',
@@ -104,7 +119,18 @@ export default {
                 'urgentUphone': 15578965432
             },
             'sexDialog': false,
-            'birthdayDialog': false
+            'birthdayDialog': false,
+            'demoEvents': [
+                {
+                    'date': '2016/12/15',
+                    'title': 'eat',
+                    'desc': 'longlonglong description'
+                },
+                {
+                    'date': '2016/11/12',
+                    'title': 'this is a title'
+                }
+            ]
         }
     },
     methods: {
@@ -114,7 +140,7 @@ export default {
         birthdayDialogFun () {
             this.birthdayDialog = true
         },
-        sexFun (number_, value_) {
+        sexFun (number_, value_) {  // 选择性别
             this.userInfo.sex.number = number_
             this.userInfo.sex.name = value_
             this.sexDialog = false
@@ -122,6 +148,12 @@ export default {
         },
         birthdayFun () {
             console.log('xxx')
+        },
+        monthChange (month) {
+            console.log(month)
+        },
+        dayChange (day) {
+            console.log(day)
         }
     },
     mounted () {
@@ -138,14 +170,18 @@ export default {
     margin: 10px 15px;
     font-size: 10px;
     color: red;
+    text-align: center;
 }
 
 // 弹窗
 .sex-dialog .content-box { margin: 0 auto 5px; }
 .sex-dialog .content-box div { padding: 8px 15px; font-size: 14px; }
 .sex-dialog .content-sex:active { background-color: #ECECEC; }
-
-
+.save-btn {
+    color: #fff;
+    margin: 20px auto 30px;
+    background-color: #1b92c8;
+}
 </style>
 <style>
 .u-address textarea { padding-left: 25px; }
@@ -156,6 +192,7 @@ export default {
     color: #999;
 }
 .enrollCard-con .weui-cell__hd > span { font-size: 14px; }
+.enrollCard-con .weui-textarea { padding-top: 5px; }
 
 </style>
 

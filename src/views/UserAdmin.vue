@@ -17,7 +17,7 @@
                     <group class="group group-list" gutter="10px">
                         <cell title="行者报名卡" is-link link="/user/card">
                         </cell>
-                        <cell title="运动装备设置" is-link link="/user/EnrollCard">
+                        <cell title="运动装备设置" is-link link="/user/sportsdevice">
                         </cell>
                     </group>
 
