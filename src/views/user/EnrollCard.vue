@@ -28,9 +28,6 @@
                             @click.native="birthdayDialogFun()" >
                             <span slot="label">出生日期</span>
                         </x-input>
-                        <template>
-                            <vue-event-calendar :events="demoEvents" @monthChanged="" @dayChanged=""></vue-event-calendar>
-                        </template>
                     </group>
 
                     <group gutter="10px">
@@ -82,10 +79,6 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import 'vue-event-calendar/dist/style.css'
-import vueEventCalendar from 'vue-event-calendar'
-Vue.use(vueEventCalendar, {locale: 'en'})
 import {
     XHeader, XButton, XInput, XTextarea,
     Group, XDialog
@@ -119,18 +112,7 @@ export default {
                 'urgentUphone': 15578965432
             },
             'sexDialog': false,
-            'birthdayDialog': false,
-            'demoEvents': [
-                {
-                    'date': '2016/12/15',
-                    'title': 'eat',
-                    'desc': 'longlonglong description'
-                },
-                {
-                    'date': '2016/11/12',
-                    'title': 'this is a title'
-                }
-            ]
+            'birthdayDialog': false
         }
     },
     methods: {
@@ -168,7 +150,7 @@ export default {
 }
 .enrollCard-con .tip {
     margin: 10px 15px;
-    font-size: 10px;
+    font-size: 12px;
     color: red;
     text-align: center;
 }
@@ -188,10 +170,9 @@ export default {
 
 .enrollCard-con .weui-input,
 .enrollCard-con .weui-textarea {
-    font-size: 14px;
     color: #999;
 }
-.enrollCard-con .weui-cell__hd > span { font-size: 14px; }
+/*.enrollCard-con .weui-cell__hd > span { font-size: 14px; }*/
 .enrollCard-con .weui-textarea { padding-top: 5px; }
 
 </style>
