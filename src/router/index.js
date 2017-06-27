@@ -33,4 +33,24 @@ export default [{
     name: '/user/userAdmin',
     component (resolve) { require(['../views/UserAdmin'], resolve) },
     meta: { scrollToTop: true }
+}, { // 修改手机号码  phone
+    path: '/user/phone',
+    name: '/user/phone',
+    component (resolve) { require(['../views/user/PhoneEdit'], resolve) },
+    meta: { scrollToTop: true }
+}, { // 绑定邮箱  email
+    path: '/user/email',
+    name: '/user/email',
+    component (resolve) { require(['../views/user/EmailEdit'], resolve) },
+    meta: { scrollToTop: true }
+}, { // 修改密码  password
+    path: '/user/password',
+    name: '/user/password',
+    component (resolve) { require(['../views/user/PasswordEdit'], resolve) },
+    meta: { scrollToTop: true }
+}, { // 报名卡片  card
+    path: '/user/card',
+    name: '/user/card',
+    component (resolve) { require(['../views/user/EnrollCard'], resolve) },
+    meta: { scrollToTop: true }
 }]

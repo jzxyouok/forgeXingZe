@@ -15,18 +15,18 @@
                     </CellBox>
 
                     <group class="group group-list" gutter="10px">
-                        <cell title="行者报名卡" is-link @click.native="">
+                        <cell title="行者报名卡" is-link link="/user/card">
                         </cell>
-                        <cell title="运动装备设置" is-link @click.native="">
+                        <cell title="运动装备设置" is-link link="/user/EnrollCard">
                         </cell>
                     </group>
 
                     <group class="group group-list" gutter="10px">
-                        <cell title="手机号" value="点击绑定手机号码" is-link @click.native="phoneDoalogFun()">
+                        <cell title="手机号" value="点击绑定手机号码" is-link link="/user/phone">
                         </cell>
-                        <cell title="邮箱" value="点击绑定邮箱" is-link @click.native="">
+                        <cell title="邮箱" value="点击绑定邮箱" is-link link="/user/email">
                         </cell>
-                        <cell title="密码" value="修改密码" is-link @click.native="">
+                        <cell title="密码" value="修改密码" is-link link="/user/password">
                         </cell>
                     </group>
 
@@ -53,32 +53,62 @@
             </div>
         </div>
         <!--手机-->
-        <x-dialog v-model="isPhone">
+        <x-dialog class="set-dialog" v-model="isPhone">
             <header class="top_hd">
                 <x-header :left-options="{showBack: false}">手机绑定</x-header>
             </header>
             <div class="main_bd">
                 <group class="phone-group">
-                    <x-input placeholder="请输入手机号" class="input-phone">
+                    <x-input type="tel" placeholder="请输入手机号" class="input-phone" :show-clear="false">
                         <span slot="label" class="iconfont icon-phone"></span>
+                        <div slot="right" class="get-code">验证码</div>
                     </x-input>
-                    <x-input placeholder="请输入验证码" class="input-code">
+                    <x-input type="number" placeholder="请输入验证码" class="input-code">
                         <span slot="label" class="iconfont icon-code"></span>
                     </x-input>
                 </group>
                 <div style="margin: auto 10px;">
-                    <x-button type="warn">退出</x-button>
+                    <x-button class="save-btn"  @click.native="isPhone=false">绑定</x-button>
                 </div>
             </div>
-        </x-dialog>  
+        </x-dialog>
 
         <!--密码-->
-        <x-dialog v-model="isPassword">
-        </x-dialog>  
+        <x-dialog class="set-dialog" v-model="isPassword">
+            <header class="top_hd">
+                <x-header :left-options="{showBack: false}">修改密码</x-header>
+            </header>
+            <div class="main_bd">
+                <group class="password-group">
+                    <x-input type="password" placeholder="请输入密码" class="input-password" :show-clear="false">
+                        <span slot="label" class="iconfont icon-phone"></span>
+                    </x-input>
+                    <x-input type="password" placeholder="请再次输入密码" class="input-password-again">
+                        <span slot="label" class="iconfont icon-code"></span>
+                    </x-input>
+                </group>
+                <div style="margin: auto 10px;">
+                    <x-button class="save-btn"  @click.native="isPassword=false">修改密码</x-button>
+                </div>
+            </div>
+        </x-dialog>
 
         <!--邮箱-->
-        <x-dialog v-model="isEmail">
-        </x-dialog>  
+        <x-dialog class="set-dialog" v-model="isEmail">
+            <header class="top_hd">
+                <x-header :left-options="{showBack: false}">手机绑定</x-header>
+            </header>
+            <div class="main_bd">
+                <group class="email-group">
+                    <x-input type="email" placeholder="请输入邮箱" class="input-email" :show-clear="false">
+                        <span slot="label" class="iconfont icon-email"></span>
+                    </x-input>
+                </group>
+                <div style="margin: auto 10px;">
+                    <x-button class="save-btn" @click.native="isEmail=false">绑定</x-button>
+                </div>
+            </div>
+        </x-dialog>
     </div>
 </template>
 
@@ -110,6 +140,12 @@ export default {
     methods: {
         phoneDoalogFun () {
             this.isPhone = true
+        },
+        emailDoalogFun () {
+            this.isEmail = true
+        },
+        passwordDoalogFun () {
+            this.isPassword = true
         }
     },
     mounted () {
@@ -118,7 +154,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '//at.alicdn.com/t/font_kezx2khkain0o1or.css';
+@import '//at.alicdn.com/t/font_h4xlek2jnd5z5mi.css';
 // ++ userAdmin 
 // ++ Class
 .page-content {
@@ -194,7 +230,6 @@ export default {
     line-height: 1;
 }
 
-
 // 弹层
 .vux-x-dialog .main_bd {
     position: absolute;
@@ -203,26 +238,26 @@ export default {
     bottom: 0; left: 0;
     background-color: #f2f2f2;
 }
-// 手机绑定
-.phone-group .iconfont {
+// 手机绑定、邮箱绑定
+.get-code {
+    padding: 4px 6px;
+    background-color: #1b92c8;
+    font-size: 14px;
+    color: #fff;
+}
+.set-dialog .iconfont {
     font-size: 20px;
     color: #ccc;
     margin-right: 10px
 }
-.phone-group .input-code::before {
+.phone-group .input-code::before,
+.password-group .input-password-again::before  {
     left: 45px;
 }
-
-</style>
-<style>
-.vux-x-dialog > .weui-dialog {
-    width: 100%; height: 100%;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    transform: translate(0,0);
-    max-width: 100%;
+.save-btn {
+    color: #fff;
+    margin: 50px auto 30px;
+    background-color: #1b92c8;
 }
 </style>
 
