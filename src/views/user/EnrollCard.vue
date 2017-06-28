@@ -2,7 +2,7 @@
     <div class="page page-user">
         <div class="page-content">
             <header class="top_hd">
-                    <x-header :left-options="{backText: ''}">手机绑定</x-header>
+                <x-header :left-options="{backText: ''}">运动装备设置</x-header>
             </header>
             <div class="main_bd">
                 <div class="enrollCard-con">
@@ -130,12 +130,6 @@ export default {
         },
         birthdayFun () {
             console.log('xxx')
-        },
-        monthChange (month) {
-            console.log(month)
-        },
-        dayChange (day) {
-            console.log(day)
         }
     },
     mounted () {
@@ -145,9 +139,7 @@ export default {
 <style lang="less" scoped>
 @import '//at.alicdn.com/t/font_h4xlek2jnd5z5mi.css';
 
-.page-content {
-    background-color: #f2f2f2;
-}
+.page-content { background-color: #f2f2f2; }
 .enrollCard-con .tip {
     margin: 10px 15px;
     font-size: 10px;
@@ -161,7 +153,7 @@ export default {
 .sex-dialog .content-sex:active { background-color: #ECECEC; }
 .save-btn {
     color: #fff;
-    margin: 20px auto 30px;
+    margin: 20px auto 15px;
     background-color: #1b92c8;
 }
 </style>

@@ -259,7 +259,7 @@ export default {
     font-size: 10px;
     line-height: 1;
     background-color: #2e8ecf;
-    padding: 1px 3px;
+    padding: 2px 3px 1px;
     border: 1px solid #fff;
     border-radius: 4px;
     transform: translateX(-50%);

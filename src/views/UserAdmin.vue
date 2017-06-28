@@ -6,7 +6,7 @@
             </header>
             <div class="main_bd">
                 <div class="content-box">
-                    <CellBox is-link class="u-info " is-link >
+                    <CellBox class="u-info " is-link link="/user/infoEdit" >
                         <div class="u-photo float_l"><img src="../assets/images/photo.jpg" alt="photo"><span class="rankNum">Lv 0</span></div>
                         <div class="text-Uinfo">
                             <p class="u-name">黑钦王</p>

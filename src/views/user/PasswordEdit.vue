@@ -2,7 +2,7 @@
     <div class="page page-user">
         <div class="page-content">
             <header class="top_hd">
-                    <x-header :left-options="{backText: ''}">手机绑定</x-header>
+                    <x-header :left-options="{backText: ''}">修改密码</x-header>
             </header>
             <div class="main_bd">
                 <group class="password-group">
@@ -70,7 +70,7 @@ export default {
 }
 .save-btn {
     color: #fff;
-    margin: 50px auto 30px;
+    margin: 40px auto 20px;
     background-color: #1b92c8;
 }
 </style>

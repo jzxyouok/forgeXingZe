@@ -71,7 +71,7 @@ export default {
 }
 .save-btn {
     color: #fff;
-    margin: 50px auto 30px;
+    margin: 40px auto 15px;
     background-color: #1b92c8;
 }
 </style>
