@@ -324,7 +324,7 @@ export default {
     font-size: 14px;
 }
 .new_dialog div {
-    height: 238px;
+    height: 272px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid #f2f2f2;
