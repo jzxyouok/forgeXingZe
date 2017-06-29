@@ -233,7 +233,7 @@ export default {
     text-align: center;
     padding: 0 10px;
     color: #fff;
-    line-height: 1.4;
+    line-height: 1.6;
 }
 .u-info .total-info > div > span {
     display: inline-block;
