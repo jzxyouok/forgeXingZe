@@ -47,16 +47,16 @@ export default {
 <style lang="less">
 .vux-header .vux-header-title, .vux-header h1 { margin: 0 110px !important; }
 .top_hd .vux-tab.nav-tab {
-    height: 30px;
+    height: 28px;
     background: #000;
-    margin-top: 5px;
+    margin-top: 6px;
     border: 1px solid #fff;
     border-radius: 2px;
     overflow: hidden;
 }
 .vux-tab.nav-tab .vux-tab-item {
     background: inherit;
-    line-height: 30px;
+    line-height: 28px;
 }
 .vux-tab.nav-tab .vux-tab-item.vux-tab-selected { background: #fff; }
 </style>
