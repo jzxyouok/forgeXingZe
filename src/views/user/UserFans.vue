@@ -4,8 +4,8 @@
             <header class="top_hd">
                 <x-header :left-options="{backText: ''}">
                     <tab :line-width="0" class="nav-tab" defaultColor="#fff" active-color="#000">
-                        <tab-item selected class="navTab-item">已发货</tab-item>
-                        <tab-item class="navTab-item">未发货</tab-item>
+                        <tab-item selected class="navTab-item">粉丝</tab-item>
+                        <tab-item class="navTab-item">关注</tab-item>
                     </tab>
                 </x-header>
             </header>
@@ -44,7 +44,8 @@ export default {
     }
 }
 </script>
-<style lang="less" scpode>
+<style lang="less">
+.vux-header .vux-header-title, .vux-header h1 { margin: 0 110px !important; }
 .top_hd .vux-tab.nav-tab {
     height: 32px;
     background: #000;
