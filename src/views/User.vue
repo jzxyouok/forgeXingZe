@@ -227,8 +227,29 @@ export default {
     bottom: 0;
     top: auto;
 }
-.u-info .total-info > div { display: inline-block; text-align: center; }
-.u-info .total-info > div > span { font-size: 14px; font-weight: 600; }
+.u-info .total-info > div {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: 0 10px;
+    color: #fff;
+    line-height: 1.4;
+}
+.u-info .total-info > div > span {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.u-info .total-info > div:active::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; left: 0; right: 0;
+    width: 95%; height: 100%;
+    margin: auto;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.16);
+}
 /*u-more*/
 .page-user .content-hd .u-more {
     position: relative;
