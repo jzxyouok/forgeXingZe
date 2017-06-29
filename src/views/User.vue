@@ -19,7 +19,7 @@
                                     <p class="my-addre">广西南宁市，男，18</p>
                                 </div>
                                 <div class="total-info">
-                                    <div class="fans_">
+                                    <div class="fans_" @click.stop="linkFun('/user/fans')">
                                         <span>0</span>
                                         <p>粉丝</p>
                                     </div>

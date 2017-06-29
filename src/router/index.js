@@ -63,4 +63,9 @@ export default [{
     name: '/user/infoEdit',
     component (resolve) { require(['../views/user/UserInfoEdit'], resolve) },
     meta: { scrollToTop: true }
+}, { // 我的粉丝/关注的人  UserFans
+    path: '/user/fans',
+    name: '/user/fans',
+    component (resolve) { require(['../views/user/UserFans'], resolve) },
+    meta: { scrollToTop: true }
 }]

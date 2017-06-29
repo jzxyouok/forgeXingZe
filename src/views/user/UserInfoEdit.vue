@@ -337,17 +337,14 @@ export default {
     width: 0; height: 0;
     transform: scale(0, 0);
     opacity: 0;
-    transition: all 1s;    
   }
   to {
     width: 100%; height: 100%;
     transform: scale(1, 1);
     opacity: 1;
-    transition: all 1s;
   }
 }
 </style>
 <style>
 .all-dialog.new_dialog > div.weui-mask { background-color: transparent }
 </style>
-
